@@ -34,15 +34,15 @@ const ExpenseForm = (props) => {
     // prevents browser reloads
     event.preventDefault();
 
-    const expenseDate = {
+    const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
 
     // pass data as a parameter for the function onSaveExpenseData and
     // send it up to the parent component NewExpense
-    props.onSaveExpenseData(expenseDate);
+    props.onSaveExpenseData(expenseData);
 
     // clear form inputs after is subitted
     setEnteredTitle('');
