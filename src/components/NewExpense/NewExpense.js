@@ -3,6 +3,9 @@ import ExpenseForm from './ExpenseForm';
 import './NewExpense.css';
 
 const NewExpense = (props) => {
+  const [isAddingExpense, setIsAddingExpense] =
+    React.useState(false);
+
   const saveExpenseDataHandler = (enteredExpenseData) => {
     const enteredData = {
       // enteredExpenseData is the object expenseDate from ExpenseForm and
@@ -11,14 +14,28 @@ const NewExpense = (props) => {
       id: Math.random().toString(),
     };
     props.onAddExpense(enteredData);
-    console.log(enteredData);
+    setIsAddingExpense(false);
+  };
+  const showFormHandler = () => {
+    setIsAddingExpense(true);
+  };
+  const cancelFormHandler = () => {
+    setIsAddingExpense(false);
   };
 
   return (
     <div className="new-expense">
-      <ExpenseForm
-        onSaveExpenseData={saveExpenseDataHandler}
-      />
+      {!isAddingExpense && (
+        <button onClick={showFormHandler}>
+          Add New Expense
+        </button>
+      )}
+      {isAddingExpense && (
+        <ExpenseForm
+          onSaveExpenseData={saveExpenseDataHandler}
+          onCancelForm={cancelFormHandler}
+        />
+      )}
     </div>
   );
 };
