@@ -10,3 +10,4 @@ The purpose of this project is to learn:
 - conditional rendering
 
 ![Expenses tracker](/public/expenses.PNG)
+![Expenses form](/public/expenses-form.PNG)
